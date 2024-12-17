@@ -1,0 +1,11 @@
+<div class="complete-wishlist">
+    <div class="scrollable-container">
+        <ul>
+            <li *ngFor="let need of myWishlist" style="display:flex;">
+                <button class="need-button">{{need.name}}</button>
+                <app-wishlist-conversion-button [id]="need.id" [quantity]="need.quantity" (onRemove)="onRemove($event)" (quantityConverted)="quantityConverted(need.id,$event)"></app-wishlist-conversion-button>
+                <app-add-wishlist-remove-button [id]="need.id" (onRemove)="onRemove($event)"></app-add-wishlist-remove-button>
+              </li>
+        </ul>
+    </div>
+</div>

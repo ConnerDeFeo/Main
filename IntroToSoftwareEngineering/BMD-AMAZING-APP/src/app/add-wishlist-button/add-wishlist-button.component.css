@@ -1,0 +1,8 @@
+button{
+    background-image: url("../../../public/add-to-wishlist-icon.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 30px;
+}

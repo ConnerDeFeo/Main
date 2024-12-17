@@ -1,0 +1,12 @@
+.custom-rounded{
+    border-radius: 2vw;
+}
+.custom-rounded-inner{
+    border-top-left-radius: 1.95vw;
+    border-top-right-radius: 1.9vw;
+}
+@media (max-width: 725px) {
+    Button{
+        width:15vw;
+    }
+}

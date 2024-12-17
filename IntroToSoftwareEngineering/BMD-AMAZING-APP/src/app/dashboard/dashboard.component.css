@@ -1,0 +1,10 @@
+/* Centers the image */
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 70vh;
+}

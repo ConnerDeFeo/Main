@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="box">
+        <img src="assets/profile.webp" alt="Profile Image" class="image">
+        <p>Username: <span *ngIf="user">{{ user.username }}</span></p>
+        <p>User Id: <span *ngIf="user">{{ user.id }}</span></p>
+        <button type="button" (click)="showModal()">Delete Account</button>
+    </div>
+    <div class="box2">
+        <p>Subscribed Needs </p>
+        <ul>
+            <li *ngFor="let needDatePair of subscriptionList">
+                <app-subs style="display: flex; flex-grow: 1;" [needDatePair]="needDatePair"></app-subs>
+                <app-sub-delete [id]="needDatePair.need.id" (onRemove)="onRemove($event)"></app-sub-delete>
+            </li>
+        </ul>
+        <p>Subscriptions Renew On:</p>
+        <p>{{ nextMonthFirstDate }}</p>
+    </div>       
+</div>
+
+<div id="myModal" class="modal" *ngIf="isModalVisible">
+    <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h2>Confirmation</h2>
+        <p>Are you sure you want to delete your account?</p>
+        <button (click)="closeModal()">Cancel</button>
+        <button (click)="confirmDelete()">Confirm</button>
+    </div>
+</div>
+

@@ -1,0 +1,13 @@
+<nav>
+  <app-search-bar *ngIf="currentPath === '/needs'"></app-search-bar>
+  <!-- For spacing purposes -->
+  <div *ngIf="currentPath !== '/needs'"></div>
+    <ul class="navigation-list">
+      <li *ngFor="let link of filteredLinks">
+        <a *ngIf="link.action; else routeLink" (click)="link.action()" class="navigation-element">{{ link.label }}</a>
+        <ng-template #routeLink>
+          <a [routerLink]="link.path" class="navigation-element {{link.label=='Basket'?'fa fa-shopping-cart':''}} {{link.path == this.currentPath?'current':''}}">{{ link.label=='Basket'?'':link.label }}</a>
+        </ng-template>
+      </li>
+    </ul>
+</nav>

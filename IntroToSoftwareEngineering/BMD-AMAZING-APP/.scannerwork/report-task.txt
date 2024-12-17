@@ -1,0 +1,6 @@
+projectKey=BMD-AMAZING-APP
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=BMD-AMAZING-APP
+ceTaskId=dcdd2820-5811-47f0-a64f-72424f4c5519
+ceTaskUrl=http://localhost:9000/api/ce/task?id=dcdd2820-5811-47f0-a64f-72424f4c5519

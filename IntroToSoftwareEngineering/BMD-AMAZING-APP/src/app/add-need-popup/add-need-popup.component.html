@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="modelForm">
+
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Cost</mat-label>
+            <input matInput formControlName="cost" type="number">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Quantity</mat-label>
+            <input matInput formControlName="quantity" type="number">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option [value]="needType.Volunteer">Volunteer</mat-option>
+                <mat-option [value]="needType.Supplies">Supplies</mat-option>
+                <mat-option [value]="needType.Monetary">Monetary</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox *ngIf="modelForm.get('type')?.value === needType.Supplies || modelForm.get('type')?.value === needType.Monetary" formControlName="isChecked">
+            Subscribe Monthly
+        </mat-checkbox>   
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onSubmit()">Submit</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+</mat-dialog-actions>

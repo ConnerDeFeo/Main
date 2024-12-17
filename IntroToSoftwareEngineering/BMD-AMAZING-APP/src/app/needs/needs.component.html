@@ -1,0 +1,17 @@
+<div class="complete-needs">
+  <div class="scrollable-container">
+      <ul>
+        <li *ngFor="let need of needs">
+          <app-need-button style="display: flex; flex-grow: 1;" [need]="need" [role]="userRole" (onUpdate)="onEdit($event)"></app-need-button>
+          <div [ngSwitch]="userRole">
+              <app-delete-button *ngSwitchCase="'admin'" [id]="need.id" (onDelete)="onDelete($event)"></app-delete-button>
+              <app-add-button  *ngSwitchCase="'user'" [need]="need" (onAdd)="onAdd($event)"></app-add-button>
+              <app-add-wishlist-button class="heart" *ngSwitchCase="'user'" [need]="need" (onAdd)="onAdd($event)"></app-add-wishlist-button>
+          </div>
+        </li>
+      </ul>
+  </div>
+  <div *ngIf="userRole === 'admin'" class="role-feature">
+      <app-create-button (onCreate)="onCreate($event)"></app-create-button>
+  </div>
+</div>

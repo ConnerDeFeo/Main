@@ -1,0 +1,44 @@
+.complete-wishlist {
+    background-color: #fff5ba;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    border: 2px solid #000000;
+}
+
+.scrollable-container {
+    max-height: 50vh;
+    overflow-y: scroll;
+    padding: 2%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.need-button {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.need-button:hover {
+    background-color: #adadad;
+}

@@ -1,0 +1,15 @@
+.container {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text color */
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 2px solid #000000; /* Black border */
+}
+
+#search-box {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #000000; /* Black border */
+    color: #000000; /* Black text color */
+    border-radius: 5px; /* Optional: rounded corners */
+    padding: 5px; /* Optional: padding for a better appearance */
+}

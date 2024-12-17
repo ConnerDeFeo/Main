@@ -1,0 +1,15 @@
+button.create {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+button.create:hover {
+    background-color: #adadad;
+}

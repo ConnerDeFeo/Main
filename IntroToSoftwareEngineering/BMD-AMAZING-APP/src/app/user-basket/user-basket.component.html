@@ -1,0 +1,11 @@
+<div class="complete-basket">
+  <div class="scrollable-container">
+    <ul>
+      <li *ngFor="let need of myBasket" style="display:flex;">
+        <button class="need-button">{{need.name}}</button>
+        <app-basket-remove-button [id]="need.id" (onRemove)="onRemove($event)"></app-basket-remove-button>
+      </li>
+    </ul>
+  </div>
+  <button (click)="checkout()">Checkout</button>
+</div>

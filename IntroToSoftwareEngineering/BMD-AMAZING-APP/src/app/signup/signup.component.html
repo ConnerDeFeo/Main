@@ -1,0 +1,17 @@
+<div class="box">
+    <div class="signin">
+        <label>Sign Up</label>
+        <form (ngSubmit)="signup()">
+          <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" [(ngModel)]="username" name="username" required>
+          </div>
+          <div>
+            <label for="confirmUsername">Confirm Username:</label>
+            <input type="text" id="confirmUsername" [(ngModel)]="confirmUsername" name="confirmUsername" required>
+          </div>
+          <button type="submit" class="clicky">Sign Up</button>
+          <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+        </form>
+    </div>
+  </div>

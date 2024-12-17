@@ -1,0 +1,14 @@
+<div class="box">
+  <div class="signin">
+      <label>Sign In</label>
+      <form (ngSubmit)="signin()">
+        <div style="text-align: center;">
+          <label for="username">Username:</label><br>
+          <input type="text" id="username" [(ngModel)]="username" name="username" required>
+        </div>
+        <button type="submit" class="clicky">Sign In</button>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+        <button [routerLink]="'/signup'" class="clicky" style="display:flex">Sign Up</button>
+      </form>
+  </div>
+</div>

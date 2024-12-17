@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DesignDoc.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="project-design-documentation">PROJECT Design Documentation</h1>
+<blockquote>
+<p><em>The following template provides the headings for your Design
+Documentation.  As you edit each section make sure you remove these
+commentary 'blockquotes'; the lines that start with a &gt; character
+and appear in the generated PDF in italics but do so only <strong>after</strong> all team members agree that the requirements for that section and current Sprint have been met. <strong>Do not</strong> delete future Sprint expectations.</em></p>
+</blockquote>
+<h2 id="team-information">Team Information</h2>
+<ul>
+<li>Team name: Black Market Donations</li>
+<li>Team members
+<ul>
+<li>Conner Jack DeFeo</li>
+<li>Andy D'Angelo</li>
+<li>Ben Kedson</li>
+<li>Oumar Toure</li>
+<li>Francis Grant</li>
+</ul>
+</li>
+</ul>
+<h2 id="executive-summary">Executive Summary</h2>
+<blockquote>
+<p>This is the save the bees u-fund project. Our project name is &quot;Bee The Change&quot; A Ui and API are created to generate a website for helpers to donate to hep save the bees!
+Every user will have acess to a funding basket which they can add or remove needs to, and checkout to help save the previously mentioned bees.
+Admins will be able to edits need cupboards, which hold the needs.</p>
+</blockquote>
+<h3 id="purpose">Purpose</h3>
+<blockquote>
+<p>Sprint 2: FOr this sprint</p>
+</blockquote>
+<h3 id="glossary-and-acronyms">Glossary and Acronyms</h3>
+<blockquote>
+<p><em><strong>[Sprint 2 &amp; 4]</strong> Provide a table of terms and acronyms.</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPA</td>
+<td>Single Page</td>
+</tr>
+</tbody>
+</table>
+<h2 id="requirements">Requirements</h2>
+<p>This section describes the features of the application.</p>
+<blockquote>
+<p>Search bar: Users should be able to searhc in their funding baskets and the needs cupboard
+Funding baskets: Each user will have one to hold and eventually check out with needs
+Need cupboard: Will contain needs that all users can add to their funding baskets
+Users: Users should be able to log into and out of their accounts, veiwing their funding baskets and the need cupboard.
+They should also be able to edit their profile
+Admin: Admin can login wiht the username 'admin' and then edit the needs cupboard</p>
+</blockquote>
+<h3 id="definition-of-mvp">Definition of MVP</h3>
+<blockquote>
+<p>Users can log in and out of application, add and remove needs, and checkout their funding baskets.
+Admins may edit the need cupboard</p>
+</blockquote>
+<h3 id="mvp-features">MVP Features</h3>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> Provide a list of top-level Epics and/or Stories of the MVP.</em></p>
+</blockquote>
+<h3 id="enhancements">Enhancements</h3>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> Describe what enhancements you have implemented for the project.</em></p>
+</blockquote>
+<h2 id="application-domain">Application Domain</h2>
+<p>This section describes the application domain.</p>
+<p><img src="DomainAnalysis.png" alt="Domain Model"></p>
+<blockquote>
+<p>Users can add and remove needs to their funding basket. They can also change their profile
+Admins change need cupboard and needs themselves
+Needs are contained in the funding basket and needs cupboard</p>
+</blockquote>
+<h2 id="architecture-and-design">Architecture and Design</h2>
+<p>This section describes the application architecture.</p>
+<h3 id="summary">Summary</h3>
+<p>The following Tiers/Layers model shows a high-level view of the webapp's architecture.
+<strong>NOTE</strong>: detailed diagrams are required in later sections of this document.</p>
+<blockquote>
+<p><em><strong>[Sprint 1]</strong> (Augment this diagram with your <strong>own</strong> rendition and representations of sample system classes, placing them into the appropriate M/V/VM (orange rectangle) tier section. Focus on what is currently required to support <strong>Sprint 1 - Demo requirements</strong>. Make sure to describe your design choices in the corresponding <em><strong>Tier Section</strong></em> and also in the <em><strong>OO Design Principles</strong></em> section below.)</em></p>
+</blockquote>
+<p><img src="ArchitectureDiagram.png" alt="The Tiers &amp; Layers of the Architecture"></p>
+<p>The web application, is built using the Model–View–ViewModel (MVVM) architecture pattern.</p>
+<p>The Model stores the application data objects including any functionality to provide persistance.</p>
+<p>The View is the client-side SPA built with Angular utilizing HTML, CSS and TypeScript. The ViewModel provides RESTful APIs to the client (View) as well as any logic required to manipulate the data objects from the Model.</p>
+<p>Both the ViewModel and Model are built using Java and Spring Framework. Details of the components within these tiers are supplied below.</p>
+<h3 id="overview-of-user-interface">Overview of User Interface</h3>
+<p>This section describes the web interface flow; this is how the user views and interacts with the web application.</p>
+<blockquote>
+<p><em>Provide a summary of the application's user interface.  Describe, from the user's perspective, the flow of the pages in the web application.</em></p>
+</blockquote>
+<h3 id="view-tier">View Tier</h3>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> Provide a summary of the View Tier UI of your architecture.
+Describe the types of components in the tier and describe their
+responsibilities.  This should be a narrative description, i.e. it has
+a flow or &quot;story line&quot; that the reader can follow.</em></p>
+</blockquote>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> You must  provide at least <strong>2 sequence diagrams</strong> as is relevant to a particular aspects
+of the design that you are describing.  (<strong>For example</strong>, in a shopping experience application you might create a
+sequence diagram of a customer searching for an item and adding to their cart.)
+As these can span multiple tiers, be sure to include an relevant HTTP requests from the client-side to the server-side
+to help illustrate the end-to-end flow.</em></p>
+</blockquote>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> To adequately show your system, you will need to present the <strong>class diagrams</strong> where relevant in your design. Some additional tips:</em></p>
+<ul>
+<li><em>Class diagrams only apply to the <strong>ViewModel</strong> and <strong>Model</strong> Tier</em></li>
+<li><em>A single class diagram of the entire system will not be effective. You may start with one, but will be need to break it down into smaller sections to account for requirements of each of the Tier static models below.</em></li>
+<li><em>Correct labeling of relationships with proper notation for the relationship type, multiplicities, and navigation information will be important.</em></li>
+<li><em>Include other details such as attributes and method signatures that you think are needed to support the level of detail in your discussion.</em></li>
+</ul>
+</blockquote>
+<h3 id="viewmodel-tier">ViewModel Tier</h3>
+<p>NeedController - Handles API requests to edit or retrieve needs and responds with HTTP Codes</p>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> Provide a summary of this tier of your architecture. This
+section will follow the same instructions that are given for the View
+Tier above.</em></p>
+</blockquote>
+<blockquote>
+<p><em>At appropriate places as part of this narrative provide <strong>one</strong> or more updated and <strong>properly labeled</strong>
+static models (UML class diagrams) with some details such as associations (connections) between classes, and critical attributes and methods. (<strong>Be sure</strong> to revisit the Static <strong>UML Review Sheet</strong> to ensure your class diagrams are using correct format and syntax.)</em></p>
+</blockquote>
+<p><img src="ViewModelUML.png" alt="Current ViewModel Tier Class Diagram"></p>
+<h3 id="model-tier">Model Tier</h3>
+<p>Need - Maps attributes of need to json properties and provides methods to retrieve and change need attributes</p>
+<blockquote>
+<p><em><strong>[Sprint 2, 3 &amp; 4]</strong> Provide a summary of this tier of your architecture. This
+section will follow the same instructions that are given for the View
+Tier above.</em></p>
+</blockquote>
+<blockquote>
+<p><em>At appropriate places as part of this narrative provide <strong>one</strong> or more updated and <strong>properly labeled</strong>
+static models (UML class diagrams) with some details such as associations (connections) between classes, and critical attributes and methods. (<strong>Be sure</strong> to revisit the Static <strong>UML Review Sheet</strong> to ensure your class diagrams are using correct format and syntax.)</em></p>
+</blockquote>
+<p><img src="ModelUML.png" alt="Current Model Tier Class"></p>
+<h2 id="oo-design-principles">OO Design Principles</h2>
+<blockquote>
+<p><em><strong>[Sprint 1]</strong> Name and describe the initial OO Principles that your team has considered in support of your design (and implementation) for this first Sprint.</em>
+Open/Closed
+BMD is incorporating the Open/Closed principle in our design by planning for all classes to be extendable, but not extensively changed in their functionality. For example, the needFileDAO class implements the NeedDAO class, and the NeedDAO class is used via other functions so that NeedFileDAO has some private and untouchable characteristics. We could still improve in this area by making some sort of extendable basket, so that wishlist and afunding basket could both polymorph from it in order to keep more efficient code.
+<img src="OOD_pics/NeedDAO_NeedController().PNG" alt="NeedController NeedDAO">
+<img src="OOD_pics/NeedDAO.PNG" alt="NeedDAO">
+<img src="OOD_pics/NeedFileDAO.PNG" alt="NeedFileDAO"></p>
+</blockquote>
+<p>Single Responsibility
+BMD is incorporating the Single Responsibility principle in our design by having each class be focused in its use. For example, the NeedController class’s purpose is to handle API requests and respond with HTTP Codes. It does not manage Need data and its storage. Instead, this job is outsourced to the NeedFileDAO class. Our usage of the single responsible principle could be further improved by consistent checking whenever a class is created that it only has one responsibility and by using the same framework with Basket and Cupboard as with Need.
+<img src="OOD_pics/NeedController_addNeed().PNG" alt="NeedController addNeed()">
+<img src="OOD_pics/NeedFileDAO_createNeed().PNG" alt="NeedFileDAO createNeed()">
+<img src="OOD_pics/NeedFileDAO_save().PNG" alt="NeedFileDAO save()"></p>
+<p>Dependency Inversion/Injections
+This principle will be designed in our design in a variety of ways. We will design our system to follow the Dependency Inversion principle by ensuring that high-level modules do not depend on low-level modules. Instead, both will depend on abstractions. Here is a list of all examples of this from our current project:
+For example, funding Baskets will be created separately from the user. I.E, the user will not be the one to instantiate or create a new funding baskets when they want to, that will be the job of the application to create one then inject the funding basket into the user’s current list of funding baskets
+To further improve adherence to Dependency Inversion, we could ensure that all dependencies are handled through interfaces or abstract classes rather than concrete implementations. This would allow us to easily swap out implementations in the future without impacting the high-level code
+<img src="OOD_pics/Application_Injecting_Funding_Basket.PNG" alt="Funding Basket Injection"></p>
+<p>Law of Demeter
+This principle will be implemented by BMD in a variety of ways. The obvious cases we have endevoured upon so far have been in regards to our backend chaining of fundciotions via dot notation. For instance, funding basket will call a give user then through that user add a need, and not simply add a need directly to the users funding basket. out code isnt perfect, adn we still have areas we could improve, and we could further enhance out LoD by making our controllers specifically more independant and only talk to their &quot;neighbors&quot;
+<img src="OOD_pics/FB_LOD.PNG" alt="Funding Basket LoD">
+<img src="OOD_pics/GetNeed_LOD.PNG" alt="Get Need LoD">
+<img src="OOD_pics/LOD_CreateNeed.PNG" alt="Create Need LoD"></p>
+<blockquote>
+<p><em><strong>[Sprint 2, 3 &amp; 4]</strong> Will eventually address upto <strong>4 key OO Principles</strong> in your final design. Follow guidance in augmenting those completed in previous Sprints as indicated to you by instructor. Be sure to include any diagrams (or clearly refer to ones elsewhere in your Tier sections above) to support your claims.</em></p>
+</blockquote>
+<blockquote>
+<p><em><strong>[Sprint 3 &amp; 4]</strong> OO Design Principles should span across <strong>all tiers.</strong></em></p>
+</blockquote>
+<h2 id="static-code-analysisfuture-design-improvements">Static Code Analysis/Future Design Improvements</h2>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> With the results from the Static Code Analysis exercise,
+<strong>Identify 3-4</strong> areas within your code that have been flagged by the Static Code
+Analysis Tool (SonarQube) and provide your analysis and recommendations.<br>
+Include any relevant screenshot(s) with each area.</em></p>
+</blockquote>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> Discuss <strong>future</strong> refactoring and other design improvements your team would explore if the team had additional time.</em></p>
+</blockquote>
+<h2 id="testing">Testing</h2>
+<p><img src="Code_Coverage/Overall_Code_Coverage.png" alt="Overall Code Coverage">
+<img src="Code_Coverage/Model_Code_Coverage.png.png" alt="Model Code Coverage">
+<img src="Code_Coverage/Persistence_Code_Coverage.png.png" alt="Persistence Code Coverage">
+<img src="Code_Coverage/Controller_Code_Coverage.png.png" alt="Controller Code Coverage"></p>
+<h3 id="acceptance-testing">Acceptance Testing</h3>
+<blockquote>
+<p>All 9 tests for all 9 current main backend classes have passed their acceptance criteria and edge cases</p>
+</blockquote>
+<h3 id="unit-testing-and-code-coverage">Unit Testing and Code Coverage</h3>
+<blockquote>
+<p><em><strong>[Sprint 4]</strong> Discuss your unit testing strategy. Report on the code coverage
+achieved from unit testing of the code base. Discuss the team's
+coverage targets, why you selected those values, and how well your
+code coverage met your targets.</em></p>
+</blockquote>
+<blockquote>
+<p><em><strong>[Sprint 2, 3 &amp; 4]</strong> <strong>Include images of your code coverage report.</strong> If there are any anomalies, discuss
+those.</em></p>
+</blockquote>
+<h2 id="ongoing-rationale">Ongoing Rationale</h2>
+<blockquote>
+<p><em><strong>[Sprint 1, 2, 3 &amp; 4]</strong> Throughout the project, provide a time stamp <strong>(yyyy/mm/dd): Sprint # and description</strong> of any <em><strong>mayor</strong></em> team decisions or design milestones/changes and corresponding justification.</em></p>
+</blockquote>
+<blockquote>
+<p>Backend will be handled by: Jack and Oumar
+Front end will be by: Francis, Andy, and Ben
+(2024/10/1): Sprint 2 Frontend will be themed around spring colors.
+(2024/10/19): Sprint 2 Only one admin user will exist and will he hardcoded into the users.json.
+(2024/10/19): Sprint 2 Needs will be displayed through an active search feature rather than a static get.</p>
+</blockquote>
+
+</body>
+</html>
