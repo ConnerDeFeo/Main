@@ -1,7 +1,9 @@
 .cardText{
     font-size: 15vw;
-    color: black;
+    color: orangered;
     margin-right:40vw;
+    font-weight: bold;
+    -webkit-text-stroke: 0.75vh black;
 }
 .navbarMenu{
     background-color: white;
