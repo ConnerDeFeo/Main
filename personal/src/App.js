@@ -4,13 +4,15 @@ import SaveTheBees from './images/SaveTheBees.jpg'
 import NightClubs from './images/NightClub.jpg'
 import ChatRoom from './images/ChatRoom.jpg'
 import PersonalWebsite from './images/PersonalWebsite.jpg'
+import { useRef } from 'react';
 
-function Header(){
+function Header({scrollToSection}){
+
   return(
     <>
       <Navbar color='dark' className='d-flex'>
         <div>
-          <Button color='light' className='navSpacing'>Projects</Button>
+          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(0)}>Projects</Button>
           <Button color='light' className='navSpacing'>About Me</Button>
           <Button color='light' className='navSpacing'>Skills</Button>
           <Button color='light' className='navSpacing'>Experience</Button>
@@ -42,18 +44,18 @@ function project(image, alt, text){
   );
 }
 
-function Projects(){
+function Projects({sectionRef}){
   return(
       <>
-          <p className="d-flex justify-content-center">Photo: Vayfor</p>
+          <p className="d-flex justify-content-center" ref={(el)=>sectionRef.current[0]=el}>Photo: Vayfor</p>
           <h1 className="d-flex justify-content-center">Recent Projects</h1>
           <Container className='mw-100'>
               <Row>
-                {project(PersonalWebsite,"Personal Website",<>This Website! - <em>Personal</em>, 2024</>)}
-                {project(SaveTheBees,"Save The Bees",<>Save The Bees - <em>Intro to Software Engineering</em>, 2024</>)}
+                {project(PersonalWebsite,"Personal Website",<>This Website! (React) - <em>Personal</em>, 2024</>)}
+                {project(SaveTheBees,"Save The Bees",<>Save The Bees (Full-Stack) - <em>Intro to Software Engineering</em>, 2024</>)}
               </Row>
               <Row>
-                {project(NightClubs,"Night Clubs",<>Full-Stack Nightclubs - <em>Web Engineering</em>, 2024</>)}
+                {project(NightClubs,"Night Clubs",<>Nightclubs (Full-Stack)- <em>Web Engineering</em>, 2024</>)}
                 {project(ChatRoom,"Chat Room",<>ChatRoom (PostgreSQL Databases) - <em>Web Engineering</em>, 2024</>)}
               </Row>
           </Container>        
@@ -65,7 +67,7 @@ function AboutMe(){
   return(
       <div className="d-grid justify-content-center">
           <h1 className="d-flex justify-content-center">About Me</h1>
-          <p className="text-center">Stuff About Me</p>
+          <p className="text-center"></p>
           <Button>Download Resume</Button>
       </div>
   );
@@ -111,16 +113,15 @@ function Footer(){
 }
 
 function App() {
-  // const sectionRef = useRef(null);
+  const sectionRef=useRef([]);
 
-  // // Function to scroll to the section
-  // const scrollToSection = () => {
-  //   sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-  // };
+  const scrollToSection = (index) => {
+    sectionRef.current[index].scrollIntoView({ behavior: "smooth" });
+  };  
   return (
     <div className='bg-dark text-light'>
-      <Header/>
-      <Projects/>
+      <Header scrollToSection={scrollToSection}/>
+      <Projects sectionRef={sectionRef}/>
       <AboutMe/>
       <Skills/>
       <Experience/>
