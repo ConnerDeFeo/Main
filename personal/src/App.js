@@ -1,6 +1,9 @@
 import { Button, Card, CardFooter, CardImg, CardImgOverlay, CardTitle, Col, Container, Navbar, NavbarText, Row } from 'reactstrap';
 import StartImage from './images/Start.jpg'
-// import { useRef } from 'react';
+import SaveTheBees from './images/SaveTheBees.jpg'
+import NightClubs from './images/NightClub.jpg'
+import ChatRoom from './images/ChatRoom.jpg'
+import PersonalWebsite from './images/PersonalWebsite.jpg'
 
 function Header(){
   return(
@@ -28,39 +31,30 @@ function Header(){
   );
 }
 
+function project(image, alt, text){
+  return(
+    <Col>
+      <Card className='m-3'>
+        <CardImg src={image} alt={alt} style={{height:'48vh',objectFit:'cover'}}/>
+        <CardFooter>{text}</CardFooter>
+      </Card>
+    </Col>
+  );
+}
+
 function Projects(){
   return(
       <>
           <p className="d-flex justify-content-center">Photo: Vayfor</p>
           <h1 className="d-flex justify-content-center">Recent Projects</h1>
-          <Container>
+          <Container className='mw-100'>
               <Row>
-                  <Col>
-                      <Card>
-                          <CardImg></CardImg>
-                          <CardFooter>This Website! - <em>Personal</em>, 2024</CardFooter>
-                      </Card>
-                  </Col>
-                  <Col>
-                      <Card>
-                          <CardImg></CardImg>
-                          <CardFooter>Save The Bees - <em>Intro to Software Engineering</em>, 2024</CardFooter>
-                      </Card>
-                  </Col>
+                {project(PersonalWebsite,"Personal Website",<>This Website! - <em>Personal</em>, 2024</>)}
+                {project(SaveTheBees,"Save The Bees",<>Save The Bees - <em>Intro to Software Engineering</em>, 2024</>)}
               </Row>
               <Row>
-                  <Col>
-                      <Card>
-                          <CardImg></CardImg>
-                          <CardFooter>Full-Stack Nightclubs - <em>Web Engineering</em>, 2024</CardFooter>
-                      </Card>
-                  </Col>
-                  <Col>
-                      <Card>
-                          <CardImg></CardImg>
-                          <CardFooter>PostgreSQL Databases - <em>Web Engineering</em>, 2024</CardFooter>
-                      </Card>
-                  </Col>
+                {project(NightClubs,"Night Clubs",<>Full-Stack Nightclubs - <em>Web Engineering</em>, 2024</>)}
+                {project(ChatRoom,"Chat Room",<>ChatRoom (PostgreSQL Databases) - <em>Web Engineering</em>, 2024</>)}
               </Row>
           </Container>        
       </>
