@@ -4,7 +4,10 @@ import SaveTheBees from './images/SaveTheBees.jpg'
 import NightClubs from './images/NightClub.jpg'
 import ChatRoom from './images/ChatRoom.jpg'
 import PersonalWebsite from './images/PersonalWebsite.jpg'
+import Professional from './images/Professional.jpg'
 import { useRef } from 'react';
+
+const centeredText="col-5 mx-auto text-center";
 
 function Header({scrollToSection}){
 
@@ -47,8 +50,8 @@ function project(image, alt, text){
 function Projects({sectionRef}){
   return(
       <>
-          <p className="d-flex justify-content-center" ref={(el)=>sectionRef.current[0]=el}>Photo: Vayfor</p>
-          <h1 className="d-flex justify-content-center">Recent Projects</h1>
+          <p className={centeredText} ref={(el)=>sectionRef.current[0]=el}>Photo: Vayfor</p>
+          <h1 className={centeredText}>Recent Projects</h1>
           <Container className='mw-100'>
               <Row>
                 {project(PersonalWebsite,"Personal Website",<>This Website! (React) - <em>Personal</em>, 2024</>)}
@@ -65,10 +68,14 @@ function Projects({sectionRef}){
 
 function AboutMe(){
   return(
-      <div className="d-grid justify-content-center">
-          <h1 className="d-flex justify-content-center">About Me</h1>
-          <p className="text-center"></p>
-          <Button>Download Resume</Button>
+      <div className='d-grid justify-content-center'>
+          <h1 className={centeredText}>About Me</h1>
+          <p className={centeredText}><strong>I'm currently attending Rochester Institue of Technology persuing
+          a BS in Software Engineering with a minor in accounting. I'm Part of the varsity Track team and currently hold a school record in the 500m Dash.</strong><br/></p>
+          <img src={Professional} alt='Professional' className='mx-auto w-25 h-100 professionalStyling'/>
+          <br/><p className={centeredText}>I spend a good part of my free time reading books relating to finance/investing, software, philosophy, and phycology (check out the library when it's finished).
+          If I'm not reading then I'm either working on a personal project, doing reaserch on companies to invest in, or working out <em>(I need a girlfriend).</em></p>
+          <Button as="a" href='https://drive.google.com/file/d/1MllOycx4jSRmRuv3i8FJHC4pTABtuR9P/view?usp=drive_link' target="_Blank" className='mx-auto'>Download Resume</Button>
       </div>
   );
 }

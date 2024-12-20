@@ -16,3 +16,12 @@
     margin-left:0.5vw;
     margin-right: 0.5vw;
 }
+p{
+    font-size: larger;
+}
+.professionalStyling{
+    object-fit:cover;
+    box-shadow:0.35vw 0.35vw rgb(255, 255, 255);
+    border:0.35vw groove black;
+    border-radius: 0.25vw;
+}
