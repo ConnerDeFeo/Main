@@ -16,7 +16,7 @@ function Header({scrollToSection}){
       <Navbar color='dark' className='d-flex'>
         <div>
           <Button color='light' className='navSpacing' onClick={()=>scrollToSection(0)}>Projects</Button>
-          <Button color='light' className='navSpacing'>About Me</Button>
+          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(1)}>About Me</Button>
           <Button color='light' className='navSpacing'>Skills</Button>
           <Button color='light' className='navSpacing'>Experience</Button>
           <Button color='light' className='navSpacing'>The Library</Button>
@@ -66,13 +66,13 @@ function Projects({sectionRef}){
   );
 }
 
-function AboutMe(){
+function AboutMe({sectionRef}){
   return(
       <div className='d-grid justify-content-center'>
-          <h1 className={centeredText}>About Me</h1>
+          <h1 className={centeredText} ref={(el)=>sectionRef.current[1]=el}>About Me</h1>
           <p className={centeredText}><strong>I'm currently attending Rochester Institue of Technology persuing
           a BS in Software Engineering with a minor in accounting. I'm Part of the varsity Track team and currently hold a school record in the 500m Dash.</strong><br/></p>
-          <img src={Professional} alt='Professional' className='mx-auto w-25 h-100 professionalStyling'/>
+          <img src={Professional} alt='Professional' className='mx-auto professionalStyling'/>
           <br/><p className={centeredText}>I spend a good part of my free time reading books relating to finance/investing, software, philosophy, and phycology (check out the library when it's finished).
           If I'm not reading then I'm either working on a personal project, doing reaserch on companies to invest in, or working out <em>(I need a girlfriend).</em></p>
           <Button as="a" href='https://drive.google.com/file/d/1MllOycx4jSRmRuv3i8FJHC4pTABtuR9P/view?usp=drive_link' target="_Blank" className='mx-auto'>Download Resume</Button>
@@ -129,7 +129,7 @@ function App() {
     <div className='bg-dark text-light'>
       <Header scrollToSection={scrollToSection}/>
       <Projects sectionRef={sectionRef}/>
-      <AboutMe/>
+      <AboutMe sectionRef={sectionRef}/>
       <Skills/>
       <Experience/>
       <TheLibrary/>

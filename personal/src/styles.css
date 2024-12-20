@@ -24,4 +24,5 @@ p{
     box-shadow:0.35vw 0.35vw rgb(255, 255, 255);
     border:0.35vw groove black;
     border-radius: 0.25vw;
+    width: 20vw;
 }
