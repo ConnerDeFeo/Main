@@ -8,6 +8,7 @@ import Professional from './images/Professional.jpg'
 import { useRef } from 'react';
 
 const centeredText="col-5 mx-auto text-center";
+const skills=['Java','Python','C','C++','HTML','CSS','JS','React','Angular','MS Windows','Linux','Unix','Agile','SCRUM','Spring','Flask','NODE.js','WireShark','OOD','JavaFX']
 
 function Header({scrollToSection}){
 
@@ -17,9 +18,8 @@ function Header({scrollToSection}){
         <div>
           <Button color='light' className='navSpacing' onClick={()=>scrollToSection(0)}>Projects</Button>
           <Button color='light' className='navSpacing' onClick={()=>scrollToSection(1)}>About Me</Button>
-          <Button color='light' className='navSpacing'>Skills</Button>
-          <Button color='light' className='navSpacing'>Experience</Button>
-          <Button color='light' className='navSpacing'>The Library</Button>
+          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(2)}>Skills</Button>
+          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(3)}>The Library</Button>
         </div>
         <div>
           <NavbarText className='text-light navSpacing'>Conner DeFeo | Rochester,NY | Full-Stack Developer</NavbarText>
@@ -80,40 +80,47 @@ function AboutMe({sectionRef}){
   );
 }
 
-function Skills(){
+function Skills({sectionRef}){
+  let container=[];
+  for(let i=0;i<skills.length;i++){
+    if(i%5===0){
+      container.push([<Col className='m-3 skills'>{skills[i]}</Col>]);
+      continue;
+    }
+    else{
+      container[container.length-1].push(<Col className='m-3 skills'>{skills[i]}</Col>)
+    }
+  } 
   return(
-      <div className="d-grid justify-content-center">
-          <h1 className="text-center">Skills</h1>
-          <p className="text-center">Some grid potentially showing skills</p>
+      <div>
+          <h1 className={centeredText} ref={(el)=>sectionRef.current[2]=el}>Skills</h1>
+          <Container className="text-center mw-80">
+            {container.map((setOfSkills)=>(
+              <Row >
+                {setOfSkills}
+              </Row>
+            ))}
+          </Container>
       </div>
   );
 }
 
-function Experience(){
+function TheLibrary({sectionRef}){
   return(
-    <div className="d-grid justify-content-center">
-      <h1 className="text-center">Experience</h1>
-      <p className="text-center">Grid with experience</p>
-    </div>
-  );
-}
-
-function TheLibrary(){
-  return(
-      <div className="d-grid justify-content-center">
-          <h1>The Library</h1>
-          <p>I have no clue how to do this yet</p>
+      <div className={centeredText}>
+          <h1 ref={(el)=>sectionRef.current[3]=el}>The Library</h1>
+          <p>Under Construction...</p>
       </div>
   );
 }
 
-function Footer(){
+function Footer({scrollToSection}){
   return(
     <Container>
         <Row className="text-center">
             <Col>@2024 Conner DeFeo</Col>
-            <Col>Linkedin</Col>
-            <Col>BACK TO TOP</Col>
+            <Col><a href='https://linkedin.com/in/conner-jack-defeo' target='_Blank' rel='noreferrer' className='text-light'>Linkedin</a></Col>
+            <Col><Button onClick={()=>window.scroll({top:0, behavior:'smooth'})} className='bg-light text-dark'>BACK TO TOP</Button></Col>
         </Row>
     </Container>
   );
@@ -127,13 +134,12 @@ function App() {
   };  
   return (
     <div className='bg-dark text-light'>
-      <Header scrollToSection={scrollToSection}/>
+      <Header scrollToSection={scrollToSection} sectionRef={sectionRef}/>
       <Projects sectionRef={sectionRef}/>
       <AboutMe sectionRef={sectionRef}/>
-      <Skills/>
-      <Experience/>
-      <TheLibrary/>
-      <Footer/>
+      <Skills sectionRef={sectionRef}/>
+      <TheLibrary sectionRef={sectionRef}/>
+      <Footer scrollToSection={scrollToSection}/>
     </div>
   );
 }
