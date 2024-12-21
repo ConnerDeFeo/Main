@@ -42,7 +42,7 @@ function Header({scrollToSection}){
 function project(image, alt, text){
   return(
     <Col>
-      <Card className='m-3'>
+      <Card className='m-3 projectCardCustom'>
         <CardImg src={image} alt={alt} style={{height:'48vh',objectFit:'cover'}}/>
         <CardFooter>{text}</CardFooter>
       </Card>

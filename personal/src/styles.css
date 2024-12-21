@@ -29,6 +29,10 @@ p{
     border-radius: 0.25vw;
     width: 20vw;
 }
+.projectCardCustom:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
 .skills{
     max-width: 12vw;
 }
