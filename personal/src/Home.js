@@ -7,6 +7,7 @@ import PersonalWebsite from './images/PersonalWebsite.jpg'
 import Professional from './images/Professional.jpg'
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 const centeredText="col-5 mx-auto text-center";
 const skills=['Java','Python','C','C++','HTML','CSS','JS','React','Angular','MS Windows','Linux','Unix','Agile','SCRUM','Spring','Flask','NODE.js','WireShark','OOD','JavaFX']
@@ -113,18 +114,6 @@ function TheLibrary({sectionRef}){
           <h1 ref={(el)=>sectionRef.current[3]=el}>The Library</h1>
           <p>Under Construction...</p>
       </div>
-  );
-}
-
-function Footer({scrollToSection}){
-  return(
-    <Container>
-        <Row className="text-center">
-            <Col>@2024 Conner DeFeo</Col>
-            <Col><a href='https://linkedin.com/in/conner-jack-defeo' target='_Blank' rel='noreferrer' className='text-light'>Linkedin</a></Col>
-            <Col><Button onClick={()=>window.scroll({top:0, behavior:'smooth'})} className='bg-light text-dark'>BACK TO TOP</Button></Col>
-        </Row>
-    </Container>
   );
 }
 

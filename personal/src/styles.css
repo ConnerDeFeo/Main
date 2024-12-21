@@ -9,6 +9,9 @@
     font-weight: bold;
     -webkit-text-stroke: 0.75vh black;
 }
+.contactImageCustom{
+    height: 30vh;
+}
 .navbarMenu{
     background-color: white;
 }
