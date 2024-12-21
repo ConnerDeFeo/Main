@@ -6,12 +6,14 @@ import ChatRoom from './images/ChatRoom.jpg'
 import PersonalWebsite from './images/PersonalWebsite.jpg'
 import Professional from './images/Professional.jpg'
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const centeredText="col-5 mx-auto text-center";
 const skills=['Java','Python','C','C++','HTML','CSS','JS','React','Angular','MS Windows','Linux','Unix','Agile','SCRUM','Spring','Flask','NODE.js','WireShark','OOD','JavaFX']
 
 function Header({scrollToSection}){
-
+  /*Basic navbar. Div tags are used here to seperate the left and right sections
+  using a flex container. navSpacing is a custom css class that keeps that keeps spacing consistant.*/
   return(
     <>
       <Navbar color='dark' className='d-flex'>
@@ -23,7 +25,7 @@ function Header({scrollToSection}){
         </div>
         <div>
           <NavbarText className='text-light navSpacing'>Conner DeFeo | Rochester,NY | Full-Stack Developer</NavbarText>
-          <Button className='bg-light text-dark'>Contact</Button>
+          <Button className='bg-light'><Link to='/contact' className='text-dark text-decoration-none'>Contact</Link></Button>
         </div>
       </Navbar>
       <Card className='bg-dark'>
