@@ -1,11 +1,11 @@
-import { Button, Container, Form, Input, Navbar, Row } from 'reactstrap';
+import {Container, Form, Input, Row } from 'reactstrap';
 import Track from './images/Track.jpg';
-import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
+import NavigationBar from './NavigationBar';
 
-function Contact(){
+function Contact({scrollToSection,sectionRef}){
     const [name,setName]=useState('');
     const [eMail,setEMail]=useState('');
     const [message,setMessage]=useState('');
@@ -23,9 +23,7 @@ function Contact(){
 
     return(
         <>
-            <Navbar color='dark'>
-                <Button className='bg-light'><Link to='/' className='text-dark text-decoration-none'>Home</Link></Button>
-            </Navbar>
+            <NavigationBar sectionRef={sectionRef} scrollToSection={scrollToSection}/>
             <div className='d-flex'>
                 <div>
                     <img src={Track} alt='Track' className='contactImageCustom'/>

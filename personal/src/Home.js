@@ -1,34 +1,22 @@
-import { Button, Card, CardFooter, CardImg, CardImgOverlay, CardTitle, Col, Container, Navbar, NavbarText, Row } from 'reactstrap';
+import { Button, Card, CardFooter, CardImg, CardImgOverlay, CardTitle, Col, Container, Row } from 'reactstrap';
 import StartImage from './images/Start.jpg'
 import SaveTheBees from './images/SaveTheBees.jpg'
 import NightClubs from './images/NightClub.jpg'
 import ChatRoom from './images/ChatRoom.jpg'
 import PersonalWebsite from './images/PersonalWebsite.jpg'
 import Professional from './images/Professional.jpg'
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import NavigationBar from './NavigationBar';
+import { useNavigate } from 'react-router-dom';
 
 const centeredText="col-5 mx-auto text-center";
 const skills=['Java','Python','C','C++','HTML','CSS','JS','React','Angular','MS Windows','Linux','Unix','Agile','SCRUM','Spring','Flask','NODE.js','WireShark','OOD','JavaFX']
 
-function Header({scrollToSection}){
+function Header(){
   /*Basic navbar. Div tags are used here to seperate the left and right sections
   using a flex container. navSpacing is a custom css class that keeps that keeps spacing consistant.*/
   return(
     <>
-      <Navbar color='dark' className='d-flex'>
-        <div>
-          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(0)}>Projects</Button>
-          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(1)}>About Me</Button>
-          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(2)}>Skills</Button>
-          <Button color='light' className='navSpacing' onClick={()=>scrollToSection(3)}>The Library</Button>
-        </div>
-        <div>
-          <NavbarText className='text-light navSpacing'>Conner DeFeo | Rochester,NY | Full-Stack Developer</NavbarText>
-          <Button className='bg-light'><Link to='/contact' className='text-dark text-decoration-none'>Contact</Link></Button>
-        </div>
-      </Navbar>
       <Card className='bg-dark'>
         <CardImg src={StartImage} alt='Start Image 400m'/>
         <CardImgOverlay>
@@ -39,25 +27,25 @@ function Header({scrollToSection}){
   );
 }
 
-function project(image, alt, text){
-  return(
-    <Col>
-      <Card className='m-3 projectCardCustom'>
-        <CardImg src={image} alt={alt} style={{height:'48vh',objectFit:'cover'}}/>
-        <CardFooter>{text}</CardFooter>
-      </Card>
-    </Col>
-  );
-}
-
-function Projects({sectionRef}){
+function Projects(){
+  const navigate=useNavigate();
+  function project(image, alt, text){
+    return(
+      <Col>
+        <Card className='m-3 projectCardCustom' onClick={()=>navigate(alt)}>
+          <CardImg src={image} alt={alt} style={{height:'48vh',objectFit:'cover'}}/>
+          <CardFooter>{text}</CardFooter>
+        </Card>
+      </Col>
+    );
+  }
   return(
       <>
-          <p className={centeredText} ref={(el)=>sectionRef.current[0]=el}>Photo: Vayfor</p>
+          <p className={centeredText}>Photo: Vayfor</p>
           <h1 className={centeredText}>Recent Projects</h1>
           <Container className='mw-100'>
               <Row>
-                {project(PersonalWebsite,"Personal Website",<>This Website! (React) - <em>Personal</em>, 2024</>)}
+                {project(PersonalWebsite,"/personalWebsite",<>This Website! (React) - <em>Personal</em>, 2024</>)}
                 {project(SaveTheBees,"Save The Bees",<>Save The Bees (Full-Stack) - <em>Intro to Software Engineering</em>, 2024</>)}
               </Row>
               <Row>
@@ -69,10 +57,10 @@ function Projects({sectionRef}){
   );
 }
 
-function AboutMe({sectionRef}){
+function AboutMe(){
   return(
       <div className='d-grid justify-content-center'>
-          <h1 className={centeredText} ref={(el)=>sectionRef.current[1]=el}>About Me</h1>
+          <h1 className={centeredText}>About Me</h1>
           <p className={centeredText}><strong>I'm currently attending Rochester Institue of Technology persuing
           a BS in Software Engineering with a minor in accounting. I'm Part of the varsity Track team and currently hold a school record in the 500m Dash.</strong><br/></p>
           <img src={Professional} alt='Professional' className='mx-auto professionalStyling'/>
@@ -83,7 +71,7 @@ function AboutMe({sectionRef}){
   );
 }
 
-function Skills({sectionRef}){
+function Skills(){
   let container=[];
   for(let i=0;i<skills.length;i++){
     if(i%5===0){
@@ -96,7 +84,7 @@ function Skills({sectionRef}){
   } 
   return(
       <div>
-          <h1 className={centeredText} ref={(el)=>sectionRef.current[2]=el}>Skills</h1>
+          <h1 className={centeredText}>Skills</h1>
           <Container className="text-center mw-80">
             {container.map((setOfSkills)=>(
               <Row >
@@ -108,29 +96,24 @@ function Skills({sectionRef}){
   );
 }
 
-function TheLibrary({sectionRef}){
-  return(
-      <div className={centeredText}>
-          <h1 ref={(el)=>sectionRef.current[3]=el}>The Library</h1>
-          <p>Under Construction...</p>
-      </div>
-  );
-}
+// function TheLibrary(){
+//   return(
+//       <div className={centeredText}>
+//           <h1>The Library</h1>
+//           <p>Under Construction...</p>
+//       </div>
+//   );
+// }
 
-function Home() {
-  const sectionRef=useRef([]);
-
-  const scrollToSection = (index) => {
-    sectionRef.current[index].scrollIntoView({ behavior: "smooth" });
-  };  
+function Home() {  
   return (
     <div className='bg-dark text-light'>
-      <Header scrollToSection={scrollToSection} sectionRef={sectionRef}/>
-      <Projects sectionRef={sectionRef}/>
-      <AboutMe sectionRef={sectionRef}/>
-      <Skills sectionRef={sectionRef}/>
-      <TheLibrary sectionRef={sectionRef}/>
-      <Footer scrollToSection={scrollToSection}/>
+      <NavigationBar />
+      <Header/>
+      <Projects />
+      <AboutMe />
+      <Skills />
+      <Footer/>
     </div>
   );
 }

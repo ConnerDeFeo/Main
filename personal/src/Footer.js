@@ -2,7 +2,7 @@ import { Col, Container, Row, Button } from "reactstrap";
 
 function Footer(){
     return(
-      <Container className="bg-dark text-light">
+      <Container className="bg-dark text-light mw-100">
           <Row className="text-center">
               <Col>@2024 Conner DeFeo</Col>
               <Col><a href='https://linkedin.com/in/conner-jack-defeo' target='_Blank' rel='noreferrer' className='text-light text-decoration-none'>Linkedin</a></Col>
