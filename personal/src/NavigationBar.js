@@ -3,10 +3,10 @@ import { Button, Navbar, NavbarText } from "reactstrap";
 
 function NavigationBar(){
     return(
-        <Navbar color='dark' className='d-flex'>
-          <Button color='light' ><Link to='/' className='text-dark text-decoration-none'>Home</Link></Button>
-          <NavbarText className="text-light">Conner DeFeo | Rochester,NY | Full-Stack Developer</NavbarText>
-          <Button color="light"><Link to='/contact' className='text-dark text-decoration-none'>Contact</Link></Button>
+        <Navbar className='d-flex bg-black'>
+          <Button color='light' className="navButton"><Link to='/' className='text-dark text-decoration-none'>Home</Link></Button>
+          <NavbarText className="text-light"><p>Rochester,NY | Full-Stack Developer</p></NavbarText>
+          <Button color="light" className="navButton"><Link to='/contact' className='text-dark text-decoration-none'>Contact</Link></Button>
         </Navbar>
     );
 }

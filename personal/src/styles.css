@@ -1,3 +1,14 @@
+h1{
+    font-size: 5vw;
+}
+p{
+    padding-top:0.5vh;
+    font-size: 1.25vw;
+}
+.backToTop:hover{
+    color: orangered;
+    cursor: pointer;
+}
 .cardImageCustom{
     height: 60vh;   
     object-fit: cover;
@@ -8,9 +19,13 @@
     margin-right:40vw;
     font-weight: bold;
     -webkit-text-stroke: 0.75vh black;
+    line-height: 1.2;
 }
 .contactImageCustom{
     height: 30vh;
+}
+.linkedin:hover{
+    color: orangered;
 }
 .navbarMenu{
     background-color: white;
@@ -19,9 +34,6 @@
     margin-left:0.5vw;
     margin-right: 0.5vw;
 }
-p{
-    font-size: larger;
-}
 .professionalStyling{
     object-fit:cover;
     box-shadow:0.35vw 0.35vw rgb(255, 255, 255);
@@ -29,10 +41,32 @@ p{
     border-radius: 0.25vw;
     width: 20vw;
 }
-.projectCardCustom:hover{
+.projectCardCustom{
+    height: 70vh;
+}
+.projectCardCustom:hover,.navButton:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
 }
+.pTop{
+    padding-top:8vh;
+    padding-bottom:2vh;
+}
 .skills{
     max-width: 12vw;
+}
+
+.navButton{
+    height: 5vh;
+    width: 12vw;
+    font-size: 1vw;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 2vw;
+}
+
+.navButton:hover{
+    background-color: orangered;
+    border: 0.15vw solid black;
 }

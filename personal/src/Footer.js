@@ -1,12 +1,12 @@
-import { Col, Container, Row, Button } from "reactstrap";
+import { Col, Container, Row} from "reactstrap";
 
 function Footer(){
     return(
-      <Container className="bg-dark text-light mw-100">
+      <Container className="bg-dark text-light mw-100 pTop">
           <Row className="text-center">
-              <Col>@2024 Conner DeFeo</Col>
-              <Col><a href='https://linkedin.com/in/conner-jack-defeo' target='_Blank' rel='noreferrer' className='text-light text-decoration-none'>Linkedin</a></Col>
-              <Col><Button onClick={()=>window.scroll({top:0, behavior:'smooth'})} className='bg-light text-dark'>BACK TO TOP</Button></Col>
+              <Col><p>@2024 Conner DeFeo</p></Col>
+              <Col><a href='https://linkedin.com/in/conner-jack-defeo' target='_Blank' rel='noreferrer' className='text-light text-decoration-none'><p className="linkedin d-inline-block">Linkedin</p></a></Col>
+              <Col><p onClick={()=>window.scroll({top:0, behavior:'smooth'})} className='backToTop d-inline-block'>BACK TO TOP</p></Col>
           </Row>
       </Container>
     );
