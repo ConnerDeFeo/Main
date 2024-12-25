@@ -8,9 +8,30 @@ import Professional from './images/Professional.jpg'
 import Footer from './Footer';
 import NavigationBar from './NavigationBar';
 import { useNavigate } from 'react-router-dom';
+import agile from './images/skills/agile.webp';
+import angular from './images/skills/angular.webp';
+import c from './images/skills/C.webp';
+import cPlusPlus from './images/skills/C++.webp';
+import css from './images/skills/css.webp';
+import flask from './images/skills/flask.webp';
+import html from './images/skills/html.webp';
+import java from './images/skills/Java.webp';
+import javaFx from './images/skills/JavaFX.webp';
+import js from './images/skills/js.webp';
+import linux from './images/skills/linux.webp';
+import nodejs from './images/skills/nodeJS.webp';
+import oop from './images/skills/OOP.png';
+import python from './images/skills/python.webp';
+import react from './images/skills/React.webp';
+import scrum from './images/skills/scrum.webp';
+import spring from './images/skills/spring.png';
+import windows from './images/skills/Windows.webp';
+import wireshark from './images/skills/wireshark.webp';
+
+const skillImages = {'agile':agile,'angular':angular,'c':c,'c++':cPlusPlus,'css':css,'flask':flask,'html':html,'java':java,'javaFx':javaFx,
+'js':js,'linux':linux,'nodejs':nodejs,'oop':oop,'python':python,'react':react,'scrum':scrum,'spring':spring,'windows':windows,'wireshark':wireshark};
 
 const centeredText="col-5 mx-auto text-center";
-const skills=['Java','Python','C','C++','HTML','CSS','JS','React','Angular','MS Windows','Linux','Unix','Agile','SCRUM','Spring','Flask','NODE.js','WireShark','OOD','JavaFX']
 
 function Header(){
   /*Basic navbar. Div tags are used here to seperate the left and right sections
@@ -60,38 +81,29 @@ function Projects(){
 function AboutMe(){
   return(
       <div className='d-grid justify-content-center'>
-          <h1 className={centeredText}>About Me</h1>
+          <h1 className={centeredText+" my-4"}>About Me</h1>
           <p className={centeredText}><strong>I'm currently attending Rochester Institue of Technology persuing
           a BS in Software Engineering with a minor in accounting. I'm Part of the varsity Track team and currently hold a school record in the 500m Dash.</strong><br/></p>
           <img src={Professional} alt='Professional' className='mx-auto professionalStyling'/>
           <br/><p className={centeredText}>I spend a good part of my free time reading books relating to finance/investing, software, philosophy, and phycology 
           (check out "The Library" when it's finished). If I'm not reading then I'm either working on a personal project, doing reaserch on companies to invest in, 
           or working out <em>(I need a girlfriend).</em></p>
-          <Button as="a" href='https://drive.google.com/file/d/1MllOycx4jSRmRuv3i8FJHC4pTABtuR9P/view?usp=drive_link' target="_Blank" color='light' className='mx-auto navButton'>Download Resume</Button>
+          <Button as="a" href='https://drive.google.com/file/d/1MllOycx4jSRmRuv3i8FJHC4pTABtuR9P/view?usp=drive_link' 
+          target="_Blank" color='light' className='mx-auto navButton my-5'>Download Resume</Button>
       </div>
   );
 }
 
 function Skills(){
-  let container=[];
-  for(let i=0;i<skills.length;i++){
-    if(i%5===0){
-      container.push([<Col className='m-3 skills'>{skills[i]}</Col>]);
-      continue;
-    }
-    else{
-      container[container.length-1].push(<Col className='m-3 skills'>{skills[i]}</Col>)
-    }
-  } 
+  const keys=Object.keys(skillImages);
+
   return(
       <div>
-          <h1 className={centeredText}>Skills</h1>
+          <h1 className={centeredText+" my-4"}>Skills</h1>
           <Container className="text-center mw-80">
-            {container.map((setOfSkills)=>(
               <Row >
-                {setOfSkills}
+                {keys.map((key,index)=>(<Col md={2}><img src={skillImages[key]} alt='key' key={index} className='skillImages my-3'/></Col>))}
               </Row>
-            ))}
           </Container>
       </div>
   );

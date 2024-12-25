@@ -52,8 +52,14 @@ p{
     padding-top:8vh;
     padding-bottom:2vh;
 }
-.skills{
-    max-width: 12vw;
+.skillImages{
+    width: 4vw;
+    height: 8vh;
+    background-color: lightgray;
+    padding: 0.5vw;
+    border-radius: 1vw;
+    color: black;
+    font-size: 1vw;
 }
 
 .navButton{
