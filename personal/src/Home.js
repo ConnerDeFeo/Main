@@ -5,8 +5,6 @@ import NightClubs from './images/NightClub.jpg'
 import ChatRoom from './images/ChatRoom.jpg'
 import PersonalWebsite from './images/PersonalWebsite.jpg'
 import Professional from './images/Professional.jpg'
-import Footer from './Footer';
-import NavigationBar from './NavigationBar';
 import { useNavigate } from 'react-router-dom';
 import agile from './images/skills/agile.webp';
 import angular from './images/skills/angular.webp';
@@ -121,12 +119,10 @@ function Skills(){
 function Home() {  
   return (
     <div className='bg-dark text-light'>
-      <NavigationBar />
       <Header/>
       <Projects />
       <AboutMe />
       <Skills />
-      <Footer/>
     </div>
   );
 }

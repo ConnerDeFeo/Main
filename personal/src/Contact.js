@@ -1,9 +1,7 @@
 import {Container, Form, Input, Row } from 'reactstrap';
 import Track from './images/Track.jpg';
-import Footer from './Footer';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
-import NavigationBar from './NavigationBar';
 
 function Contact({scrollToSection,sectionRef}){
     const [name,setName]=useState('');
@@ -23,7 +21,6 @@ function Contact({scrollToSection,sectionRef}){
 
     return(
         <>
-            <NavigationBar sectionRef={sectionRef} scrollToSection={scrollToSection}/>
             <div className='d-flex'>
                 <div>
                     <img src={Track} alt='Track' className='contactImageCustom'/>
@@ -39,7 +36,6 @@ function Contact({scrollToSection,sectionRef}){
                     </Form>
                 </Container>
             </div>
-            <Footer/>
         </>
     );
 }

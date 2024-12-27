@@ -1,12 +1,9 @@
 import { Col, Container, Row } from "reactstrap";
-import Footer from "./Footer";
-import NavigationBar from "./NavigationBar";
 import NO_IMAGE from'./images/NoImage.jpg'
 
 function PersonalWebsite(){
     return(
         <>
-            <NavigationBar/>
             <Container>
                 <Row>
                     <Col>
@@ -25,7 +22,6 @@ function PersonalWebsite(){
                 dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </Row>
             </Container>
-            <Footer/>
         </>
     );
 }
