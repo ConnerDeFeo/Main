@@ -64,7 +64,7 @@ function Projects(){
           <h1 className={centeredText}>Recent Projects</h1>
           <Container className='mw-100'>
               <Row>
-                {project(PersonalWebsite,"/personalWebsite",<>This Website! (React) - <em>Personal</em></>,<>2024</>)}
+                {project(PersonalWebsite,"personalWebsite",<>This Website! (React) - <em>Personal</em></>,<>2024</>)}
                 {project(SaveTheBees,"Save The Bees",<>Save The Bees (Full-Stack) - <em>Intro to Software Engineering</em></>,<>2024</>)}
               </Row>
               <Row>
@@ -80,8 +80,8 @@ function AboutMe(){
   return(
       <div className='d-grid justify-content-center'>
           <h1 className={centeredText+" my-4"}>About Me</h1>
-          <p className={centeredText}><strong>I'm currently attending Rochester Institue of Technology persuing
-          a BS in Software Engineering with a minor in accounting. I'm Part of the varsity Track team and currently hold a school record in the 500m Dash.</strong><br/></p>
+          <p className={centeredText}><strong>I am currently attending the Rochester Institute of Technology, pursuing a BS in 
+            Software Engineering with a minor in Accounting. I am part of the varsity track team and currently hold the school record in the 500m dash.</strong><br/></p>
           <img src={Professional} alt='Professional' className='mx-auto professionalStyling'/>
           <br/><p className={centeredText}>I spend a good part of my free time reading books relating to finance/investing, software, philosophy, and phycology 
           (check out "The Library" when it's finished). If I'm not reading then I'm either working on a personal project, doing reaserch on companies to invest in, 
