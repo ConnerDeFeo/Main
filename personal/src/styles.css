@@ -1,7 +1,7 @@
 h1{
     font-size: 5vw;
 }
-p{
+p,.submitButton{
     padding-top:0.5vh;
     font-size: 1.25vw;
 }
@@ -22,10 +22,38 @@ p{
     line-height: 1.2;
 }
 .contactImageCustom{
-    height: 30vh;
+    height: 80vh;
+    width: 100%;
 }
-.linkedin:hover{
+.formNameEmail{
+    height: 7vh;
+}
+.formMessage{
+    height: 14vh;
+}
+.formNameEmail,.formMessage{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+.decorativeLine{
+    background-color: black;
+    height: 0.3vh;
+}
+.linkedin:hover,.submitButton:hover{
     color: orangered;
+}
+.navButton{
+    height: 5vh;
+    width: 12vw;
+    font-size: 1vw;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 2vw;
+}
+.navButton:hover{
+    background-color: orangered;
+    border: 0.15vw solid black;
 }
 .navbarMenu{
     background-color: white;
@@ -35,11 +63,13 @@ p{
     margin-right: 0.5vw;
 }
 .professionalStyling{
+    width: 20vw;
+}
+.professionalStyling,.contactImageCustom{
     object-fit:cover;
     box-shadow:0.35vw 0.35vw rgb(255, 255, 255);
     border:0.35vw groove black;
     border-radius: 0.25vw;
-    width: 20vw;
 }
 .projectCardCustom{
     height: 70vh;
@@ -61,18 +91,6 @@ p{
     color: black;
     font-size: 1vw;
 }
-
-.navButton{
-    height: 5vh;
-    width: 12vw;
-    font-size: 1vw;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    border-radius: 2vw;
-}
-
-.navButton:hover{
-    background-color: orangered;
-    border: 0.15vw solid black;
+.submitButton {
+    color: white; /* Initial text color */
 }
