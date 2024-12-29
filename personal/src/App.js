@@ -38,10 +38,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/contact" element={<Contact/>} />
-        <Route path="/personalWebsite" element={<ProjectPage type={'Personal'} languages={'React, Bootstrap, Reactstrap'} date={'2025'} video={NO_IMAGE} description={lIpsum}/>} />
-        <Route path="/saveTheBees" element={<ProjectPage type={'Inro to Software Engineering'} languages={'Angular, Java, SpringBoot'} date={'2024'} video={NO_IMAGE} description={lIpsum}/>} />
-        <Route path="/nightClubs" element={<ProjectPage type={'Web Engineering'} languages={'React, Bootstrap, Reactstrap, Python, Flask, PostgreSQL'} date={'2024'} video={NO_IMAGE} description={lIpsum}/>} />
-        <Route path="/chatRoom" element={<ProjectPage type={'Web Engineering'} languages={'Python, PostgreSQL'} date={'2024'} video={NO_IMAGE} description={lIpsum}/>} />
+        <Route path="/personalWebsite" element={<ProjectPage title={'PERSONAL WEBSITE'} type={'Personal'} languages={'React, Bootstrap, Reactstrap'} date={'2025'} video={NO_IMAGE} description={lIpsum}/>} />
+        <Route path="/saveTheBees" element={<ProjectPage title={'SAVE THE BEES'} type={'Inro to Software Engineering'} languages={'Angular, Java, SpringBoot'} date={'2024'} video={NO_IMAGE} description={lIpsum}/>} />
+        <Route path="/nightClubs" element={<ProjectPage title={'NIGHT CLUBS'} type={'Web Engineering'} languages={'React, Bootstrap, Reactstrap, Python, Flask, PostgreSQL'} date={'2024'} video={NO_IMAGE} description={lIpsum}/>} />
+        <Route path="/chatRoom" element={<ProjectPage title={'CHAT ROOM'} type={'Web Engineering'} languages={'Python, PostgreSQL'} date={'2024'} video={NO_IMAGE} description={lIpsum}/>} />
       </Routes>
       <Container className="mw-100 pTop">
           <Row className="text-center">
