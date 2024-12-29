@@ -14,7 +14,7 @@ function ProjectPage({title,type,languages,date,video,description}){
                     </Col>
                 </Row>
                 <Row className="my-4">
-                    <img src={video} alt="NoImg" className="mx-auto"/>
+                    <video src={video} alt="NoImg" className="mx-auto"/>
                 </Row>
                 <Row>
                     {description}
