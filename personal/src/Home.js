@@ -64,12 +64,12 @@ function Projects(){
           <h1 className={centeredText}>Recent Projects</h1>
           <Container className='mw-100'>
               <Row>
-                {project(PersonalWebsite,"personalWebsite",<>This Website! (React) - <em>Personal</em></>,<>2024</>)}
-                {project(SaveTheBees,"Save The Bees",<>Save The Bees (Full-Stack) - <em>Intro to Software Engineering</em></>,<>2024</>)}
+                {project(PersonalWebsite,"personalWebsite",<>This Website! (React) - <em>Personal</em></>,<>2025</>)}
+                {project(SaveTheBees,"saveTheBees",<>Save The Bees (Full-Stack) - <em>Intro to Software Engineering</em></>,<>2024</>)}
               </Row>
               <Row>
-                {project(NightClubs,"Night Clubs",<>Nightclubs (Full-Stack)- <em>Web Engineering</em></>,<>2024</>)}
-                {project(ChatRoom,"Chat Room",<>ChatRoom (PostgreSQL Databases) - <em>Web Engineering</em></>,<>2024</>)}
+                {project(NightClubs,"nightClubs",<>Nightclubs (Full-Stack)- <em>Web Engineering</em></>,<>2024</>)}
+                {project(ChatRoom,"chatRoom",<>ChatRoom (PostgreSQL Databases) - <em>Web Engineering</em></>,<>2024</>)}
               </Row>
           </Container>        
       </>
@@ -118,7 +118,7 @@ function Skills(){
 
 function Home() {  
   return (
-    <div className='bg-dark text-light'>
+    <div>
       <Header/>
       <Projects />
       <AboutMe />

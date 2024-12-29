@@ -40,7 +40,7 @@ function Contact(){
                     </Col>
                 </Row>
             </Container>
-            <Container>
+            <Container className='mw-100'>
                 <div className='decorativeLine my-5'></div>
                 <Row>
                     <Col className='text-center'>
