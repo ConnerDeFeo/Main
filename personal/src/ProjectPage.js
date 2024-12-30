@@ -14,7 +14,7 @@ function ProjectPage({title,type,languages,date,video,description}){
                     </Col>
                 </Row>
                 <Row className="my-4">
-                    <video src={video} alt="NoImg" className="mx-auto"/>
+                    <iframe src={video} title={title} className="mx-auto"></iframe>
                 </Row>
                 <Row>
                     {description}

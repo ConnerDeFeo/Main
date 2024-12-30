@@ -2,9 +2,11 @@ body{
     background-color: #212529;
     color: white;
 }
-
 h1{
     font-size: 5vw;
+}
+iframe{
+    height: 80vh;
 }
 p,.submitButton{
     padding-top:0.5vh;
