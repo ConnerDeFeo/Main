@@ -100,7 +100,7 @@ function Skills(){
           <h1 className={centeredText+" my-4"}>Skills</h1>
           <Container className="text-center mw-80">
               <Row >
-                {keys.map((key,index)=>(<Col xs={6} md={2}><img src={skillImages[key]} alt='key' key={index} className='skillImages my-3'/></Col>))}
+                {keys.map((key,index)=>(<Col xs={6} sm={6} md={2}><img src={skillImages[key]} alt='key' key={index} className='skillImages my-3'/></Col>))}
               </Row>
           </Container>
       </div>
