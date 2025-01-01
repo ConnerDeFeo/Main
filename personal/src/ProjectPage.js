@@ -17,7 +17,9 @@ function ProjectPage({title,type,languages,date,video,description}){
                     <iframe src={video} title={title} className="mx-auto"></iframe>
                 </Row>
                 <Row>
-                    {description}
+                    <Col>
+                        {description}
+                    </Col>
                 </Row>
             </Container>
         </>
