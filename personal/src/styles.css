@@ -3,30 +3,30 @@ body{
     color: white;
 }
 h1{
-    font-size: 5vw;
+    font-size:50px;
 }
 iframe{
     height: 80vh;
 }
 p,.submitButton{
     padding-top:0.5vh;
-    font-size: 1.25vw;
+    font-size: 22px;
 }
 .backToTop:hover{
     color: orangered;
     cursor: pointer;
 }
 .cardImageCustom{
-    height: 60vh;   
+    height: 40vh;   
     object-fit: cover;
 }
 .cardText{
-    font-size: 15vw;
     color: orangered;
-    margin-right:40vw;
+    line-height: 1.3;
+    -webkit-text-stroke: 0.6vw black;
     font-weight: bold;
-    -webkit-text-stroke: 0.75vh black;
-    line-height: 1.2;
+    margin-right:35vw;
+    font-size: 15vw;
 }
 .contactImageCustom{
     height: 80vh;
@@ -52,39 +52,37 @@ p,.submitButton{
 .linkedin:hover,.submitButton:hover{
     color: orangered;
 }
+.navbar{
+    height: 10vh;
+}
 .navButton{
-    height: 5vh;
-    width: 12vw;
-    font-size: 1vw;
+    width: 125px;
+    margin:10px;
+}
+.navButton,.resumeDownload{
+    padding:7px;
     text-decoration: none;
     color: black;
     font-weight: bold;
-    border-radius: 2vw;
+    border-radius: 15px;
 }
-.navButton:hover{
+.navButton:hover,.resumeDownload:hover{
     background-color: orangered;
-    border: 0.15vw solid black;
-}
-.navbarMenu{
-    background-color: white;
-}
-.navSpacing{
-    margin-left:0.5vw;
-    margin-right: 0.5vw;
+    border: 0.1px solid black
 }
 .professionalStyling{
-    width: 20vw;
+    width: 400px;
 }
 .professionalStyling,.contactImageCustom{
     object-fit:cover;
-    box-shadow:0.35vw 0.35vw rgb(255, 255, 255);
-    border:0.35vw groove black;
-    border-radius: 0.25vw;
+    box-shadow:5px 5px rgb(255, 255, 255);
+    border:5px groove black;
+    border-radius: 10px;
 }
 .projectCardCustom{
-    height: 70vh;
+    height: 46vh;
 }
-.projectCardCustom:hover,.navButton:hover{
+.projectCardCustom:hover,.navButton:hover,.resumeDownload:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
 }
@@ -92,15 +90,31 @@ p,.submitButton{
     padding-top:8vh;
     padding-bottom:2vh;
 }
+.resumeDownload{
+    font-size: 22px;
+}
 .skillImages{
-    width: 4vw;
-    height: 8vh;
+    width: 75px;
+    height: 75px;
     background-color: lightgray;
-    padding: 0.5vw;
-    border-radius: 1vw;
+    padding: 8px;
+    border-radius: 15px;
     color: black;
     font-size: 1vw;
 }
 .submitButton {
     color: white; /* Initial text color */
+}
+@media(min-width: 992px){
+    .cardImageCustom{
+        height: 65vh;
+        object-fit: cover;
+    }
+    .projectCardCustom{
+        height: 70vh;
+    }
+    .navButton{
+        width: 150px;
+        font-size: 20px;
+    }
 }

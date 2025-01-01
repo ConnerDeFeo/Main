@@ -29,7 +29,7 @@ import wireshark from './images/skills/wireshark.webp';
 const skillImages = {'agile':agile,'angular':angular,'c':c,'c++':cPlusPlus,'css':css,'flask':flask,'html':html,'java':java,'javaFx':javaFx,
 'js':js,'linux':linux,'nodejs':nodejs,'oop':oop,'python':python,'react':react,'scrum':scrum,'spring':spring,'windows':windows,'wireshark':wireshark};
 
-const centeredText="col-5 mx-auto text-center";
+const centeredText="col-10 col-lg-6 mx-auto text-center";
 
 function Header(){
   /*Basic navbar. Div tags are used here to seperate the left and right sections
@@ -42,6 +42,7 @@ function Header(){
           <CardTitle className='cardText'>Conner DeFeo</CardTitle>
         </CardImgOverlay>
       </Card>
+      <p className={centeredText}>Photo: Vayfor</p>
     </>
   );
 }
@@ -50,9 +51,9 @@ function Projects(){
   const navigate=useNavigate();
   function project(image, alt, text, date){
     return(
-      <Col>
+      <Col className='col-12 col-md-6'>
         <Card className='m-3 projectCardCustom' onClick={()=>navigate(alt)}>
-          <CardImg src={image} alt={alt} style={{height:'65vh',objectFit:'cover'}}/>
+          <CardImg src={image} alt={alt} className='cardImageCustom'/>
           <CardFooter><Container><Row><Col style={{position:'absolute'}}><strong>{text}</strong></Col><Col className='text-end'><strong>{date}</strong></Col></Row></Container></CardFooter>
         </Card>
       </Col>
@@ -60,16 +61,15 @@ function Projects(){
   }
   return(
       <>
-          <p className={centeredText}>Photo: Vayfor</p>
           <h1 className={centeredText}>Recent Projects</h1>
           <Container className='mw-100'>
               <Row>
-                {project(PersonalWebsite,"personalWebsite",<>This Website! (React) - <em>Personal</em></>,<>2025</>)}
-                {project(SaveTheBees,"saveTheBees",<>Save The Bees (Full-Stack) - <em>Intro to Software Engineering</em></>,<>2024</>)}
+                {project(PersonalWebsite,"personalWebsite",<>This Website! - <em>Personal</em></>,<>2025</>)}
+                {project(SaveTheBees,"saveTheBees",<>Save The Bees - <em>Intro to SWEN</em></>,<>2024</>)}
               </Row>
               <Row>
-                {project(NightClubs,"nightClubs",<>Nightclubs (Full-Stack)- <em>Web Engineering</em></>,<>2024</>)}
-                {project(ChatRoom,"chatRoom",<>ChatRoom (PostgreSQL Databases) - <em>Web Engineering</em></>,<>2024</>)}
+                {project(NightClubs,"nightClubs",<>Nightclubs - <em>Web Engineering</em></>,<>2024</>)}
+                {project(ChatRoom,"chatRoom",<>ChatRoom - <em>Web Engineering</em></>,<>2024</>)}
               </Row>
           </Container>        
       </>
@@ -87,7 +87,7 @@ function AboutMe(){
           (check out "The Library" when it's finished). If I'm not reading then I'm either working on a personal project, doing reaserch on companies to invest in, 
           or working out <em>(I need a girlfriend).</em></p>
           <Button as="a" href='https://drive.google.com/file/d/1MllOycx4jSRmRuv3i8FJHC4pTABtuR9P/view?usp=drive_link' 
-          target="_Blank" color='light' className='mx-auto navButton my-5'>Download Resume</Button>
+          target="_Blank" color='light' className='mx-auto resumeDownload my-5 border border-black'>Download Resume</Button>
       </div>
   );
 }
@@ -100,7 +100,7 @@ function Skills(){
           <h1 className={centeredText+" my-4"}>Skills</h1>
           <Container className="text-center mw-80">
               <Row >
-                {keys.map((key,index)=>(<Col md={2}><img src={skillImages[key]} alt='key' key={index} className='skillImages my-3'/></Col>))}
+                {keys.map((key,index)=>(<Col xs={6} md={2}><img src={skillImages[key]} alt='key' key={index} className='skillImages my-3'/></Col>))}
               </Row>
           </Container>
       </div>
