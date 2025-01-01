@@ -6,7 +6,7 @@ h1{
     font-size:50px;
 }
 iframe{
-    height: 80vh;
+    height: 40vh;
 }
 p,.submitButton{
     padding-top:0.5vh;
@@ -106,6 +106,9 @@ p,.submitButton{
     color: white; /* Initial text color */
 }
 @media(min-width: 992px){
+    iframe{
+        height: 80vh;
+    }
     .cardImageCustom{
         height: 65vh;
         object-fit: cover;
