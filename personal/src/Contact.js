@@ -23,11 +23,7 @@ function Contact(){
         <div className='bg-dark text-light'>
             <Container className='mw-100 pt-5'>
                 <Row>
-                    <Col className='col-4 d-grid justify-content-center text-center'>
-                        <img src={Track} alt='Track' className='contactImageCustom'/>
-                        <p>Photo: Autumn Bernava</p>
-                    </Col>
-                    <Col className='col-8 my-auto'>
+                    <Col className='col-12 col-md-8 my-auto'>
                         <Container className='vh-80'>
                             <Form onSubmit={sendEmail}>
                                 <Row>Contact</Row>
@@ -37,6 +33,10 @@ function Contact(){
                                 <Row><Input type='submit' value='Send Email' className=' bg-secondary border border-black submitButton'/></Row>
                             </Form>
                         </Container>
+                    </Col>
+                    <Col className='col-12 col-md-4 d-grid justify-content-center text-center mt-5'>
+                        <img src={Track} alt='Track' className='contactImageCustom'/>
+                        <p>Photo: Autumn Bernava</p>
                     </Col>
                 </Row>
             </Container>
