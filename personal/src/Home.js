@@ -31,17 +31,6 @@ const skillImages = {'agile':agile,'angular':angular,'c':c,'c++':cPlusPlus,'css'
 
 const centeredText="col-10 col-lg-6 mx-auto text-center";
 
-function Header(){
-  /*Basic navbar. Div tags are used here to seperate the left and right sections
-  using a flex container. navSpacing is a custom css class that keeps that keeps spacing consistant.*/
-  return(
-    <>
-      <img src={StartImage} alt='Start Image 400m' style={{width:'100%'}}/>
-      <p className={centeredText}>Photo: Vayfor</p>
-    </>
-  );
-}
-
 function Projects(){
   const navigate=useNavigate();
   function project(image, alt, text, date){
@@ -71,8 +60,13 @@ function Projects(){
   );
 }
 
-function AboutMe(){
-  return(
+function Home() {  
+  const keys=Object.keys(skillImages);
+  return (
+    <div>
+      <img src={StartImage} alt='Start 400m' style={{width:'100%'}}/>
+      <p className={centeredText}>Photo: Vayfor</p>
+      <Projects />
       <div className='d-grid justify-content-center'>
           <h1 className={centeredText+" my-4"}>About Me</h1>
           <p className={centeredText}><strong>I am currently attending the Rochester Institute of Technology, pursuing a BS in 
@@ -84,13 +78,6 @@ function AboutMe(){
           <Button as="a" href='https://drive.google.com/file/d/1MllOycx4jSRmRuv3i8FJHC4pTABtuR9P/view?usp=drive_link' 
           target="_Blank" color='light' className='mx-auto resumeDownload my-5 border border-black'>Download Resume</Button>
       </div>
-  );
-}
-
-function Skills(){
-  const keys=Object.keys(skillImages);
-
-  return(
       <div>
           <h1 className={centeredText+" my-4"}>Skills</h1>
           <Container className="text-center mw-80">
@@ -99,25 +86,6 @@ function Skills(){
               </Row>
           </Container>
       </div>
-  );
-}
-
-// function TheLibrary(){
-//   return(
-//       <div className={centeredText}>
-//           <h1>The Library</h1>
-//           <p>Under Construction...</p>
-//       </div>
-//   );
-// }
-
-function Home() {  
-  return (
-    <div>
-      <Header/>
-      <Projects />
-      <AboutMe />
-      <Skills />
     </div>
   );
 }

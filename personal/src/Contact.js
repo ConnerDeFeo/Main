@@ -9,7 +9,6 @@ function Contact(){
     const [message,setMessage]=useState('');
 
     const sendEmail=(e)=>{
-        //Once published, add reCaptcha.
         e.preventDefault();
         emailjs.sendForm('service_ho7d22t', 'template_e1yhk0c', e.target, 'dHmN6Poxt2OKm6_FU')
           .then((result) => {
